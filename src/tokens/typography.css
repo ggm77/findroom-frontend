@@ -1,0 +1,61 @@
+/* ============================================================
+   Typography — SF Pro ladder
+   ------------------------------------------------------------
+   Weight ladder is 300 / 400 / 600 / 700. Weight 500 is
+   deliberately absent. Negative tracking at display sizes;
+   body runs at 17px (not 16px). Each token is exposed both as
+   discrete --type-*-{size,weight,leading,tracking} vars AND as
+   a shorthand utility class for specimen cards.
+   ============================================================ */
+:root {
+  /* hero-display — 56 / 600 / 1.07 / -0.28 */
+  --type-hero-size: 56px;   --type-hero-weight: 600; --type-hero-leading: 1.07; --type-hero-tracking: -0.28px;
+  /* display-lg — 40 / 600 / 1.10 / 0 */
+  --type-display-lg-size: 40px; --type-display-lg-weight: 600; --type-display-lg-leading: 1.10; --type-display-lg-tracking: 0px;
+  /* display-md — 34 / 600 / 1.47 / -0.374 */
+  --type-display-md-size: 34px; --type-display-md-weight: 600; --type-display-md-leading: 1.47; --type-display-md-tracking: -0.374px;
+  /* lead — 28 / 400 / 1.14 / 0.196 */
+  --type-lead-size: 28px; --type-lead-weight: 400; --type-lead-leading: 1.14; --type-lead-tracking: 0.196px;
+  /* lead-airy — 24 / 300 / 1.5 / 0 (rare weight 300) */
+  --type-lead-airy-size: 24px; --type-lead-airy-weight: 300; --type-lead-airy-leading: 1.5; --type-lead-airy-tracking: 0px;
+  /* tagline — 21 / 600(700) / 1.19 / 0.231 */
+  --type-tagline-size: 21px; --type-tagline-weight: 600; --type-tagline-leading: 1.19; --type-tagline-tracking: 0.231px;
+  /* body-strong — 17 / 600 / 1.24 / -0.374 */
+  --type-body-strong-size: 17px; --type-body-strong-weight: 600; --type-body-strong-leading: 1.24; --type-body-strong-tracking: -0.374px;
+  /* body — 17 / 400 / 1.47 / -0.374 */
+  --type-body-size: 17px; --type-body-weight: 400; --type-body-leading: 1.47; --type-body-tracking: -0.374px;
+  /* dense-link — 17 / 400 / 2.41 / 0 (relaxed footer leading) */
+  --type-dense-link-size: 17px; --type-dense-link-weight: 400; --type-dense-link-leading: 2.41; --type-dense-link-tracking: 0px;
+  /* caption — 14 / 400 / 1.43 / -0.224 */
+  --type-caption-size: 14px; --type-caption-weight: 400; --type-caption-leading: 1.43; --type-caption-tracking: -0.224px;
+  /* caption-strong — 14 / 600 / 1.29 / -0.224 */
+  --type-caption-strong-size: 14px; --type-caption-strong-weight: 600; --type-caption-strong-leading: 1.29; --type-caption-strong-tracking: -0.224px;
+  /* button-large — 18 / 300 / 1.0 / 0 (rare weight 300) */
+  --type-button-large-size: 18px; --type-button-large-weight: 300; --type-button-large-leading: 1.0; --type-button-large-tracking: 0px;
+  /* button-utility — 14 / 400 / 1.29 / -0.224 */
+  --type-button-utility-size: 14px; --type-button-utility-weight: 400; --type-button-utility-leading: 1.29; --type-button-utility-tracking: -0.224px;
+  /* fine-print — 12 / 400 / 1.0 / -0.12 */
+  --type-fine-print-size: 12px; --type-fine-print-weight: 400; --type-fine-print-leading: 1.0; --type-fine-print-tracking: -0.12px;
+  /* micro-legal — 10 / 400 / 1.3 / -0.08 */
+  --type-micro-legal-size: 10px; --type-micro-legal-weight: 400; --type-micro-legal-leading: 1.3; --type-micro-legal-tracking: -0.08px;
+  /* nav-link — 12 / 400 / 1.0 / -0.12 */
+  --type-nav-link-size: 12px; --type-nav-link-weight: 400; --type-nav-link-leading: 1.0; --type-nav-link-tracking: -0.12px;
+}
+
+/* ---- Shorthand utility classes (display face >=19px, text face below) ---- */
+.type-hero        { font-family: var(--font-display); font-size: var(--type-hero-size); font-weight: var(--type-hero-weight); line-height: var(--type-hero-leading); letter-spacing: var(--type-hero-tracking); }
+.type-display-lg  { font-family: var(--font-display); font-size: var(--type-display-lg-size); font-weight: var(--type-display-lg-weight); line-height: var(--type-display-lg-leading); letter-spacing: var(--type-display-lg-tracking); }
+.type-display-md  { font-family: var(--font-text); font-size: var(--type-display-md-size); font-weight: var(--type-display-md-weight); line-height: var(--type-display-md-leading); letter-spacing: var(--type-display-md-tracking); }
+.type-lead        { font-family: var(--font-display); font-size: var(--type-lead-size); font-weight: var(--type-lead-weight); line-height: var(--type-lead-leading); letter-spacing: var(--type-lead-tracking); }
+.type-lead-airy   { font-family: var(--font-display); font-size: var(--type-lead-airy-size); font-weight: var(--type-lead-airy-weight); line-height: var(--type-lead-airy-leading); letter-spacing: var(--type-lead-airy-tracking); }
+.type-tagline     { font-family: var(--font-display); font-size: var(--type-tagline-size); font-weight: var(--type-tagline-weight); line-height: var(--type-tagline-leading); letter-spacing: var(--type-tagline-tracking); }
+.type-body-strong { font-family: var(--font-text); font-size: var(--type-body-strong-size); font-weight: var(--type-body-strong-weight); line-height: var(--type-body-strong-leading); letter-spacing: var(--type-body-strong-tracking); }
+.type-body        { font-family: var(--font-text); font-size: var(--type-body-size); font-weight: var(--type-body-weight); line-height: var(--type-body-leading); letter-spacing: var(--type-body-tracking); }
+.type-dense-link  { font-family: var(--font-text); font-size: var(--type-dense-link-size); font-weight: var(--type-dense-link-weight); line-height: var(--type-dense-link-leading); letter-spacing: var(--type-dense-link-tracking); }
+.type-caption     { font-family: var(--font-text); font-size: var(--type-caption-size); font-weight: var(--type-caption-weight); line-height: var(--type-caption-leading); letter-spacing: var(--type-caption-tracking); }
+.type-caption-strong { font-family: var(--font-text); font-size: var(--type-caption-strong-size); font-weight: var(--type-caption-strong-weight); line-height: var(--type-caption-strong-leading); letter-spacing: var(--type-caption-strong-tracking); }
+.type-button-large{ font-family: var(--font-text); font-size: var(--type-button-large-size); font-weight: var(--type-button-large-weight); line-height: var(--type-button-large-leading); letter-spacing: var(--type-button-large-tracking); }
+.type-button-utility { font-family: var(--font-text); font-size: var(--type-button-utility-size); font-weight: var(--type-button-utility-weight); line-height: var(--type-button-utility-leading); letter-spacing: var(--type-button-utility-tracking); }
+.type-fine-print  { font-family: var(--font-text); font-size: var(--type-fine-print-size); font-weight: var(--type-fine-print-weight); line-height: var(--type-fine-print-leading); letter-spacing: var(--type-fine-print-tracking); }
+.type-micro-legal { font-family: var(--font-text); font-size: var(--type-micro-legal-size); font-weight: var(--type-micro-legal-weight); line-height: var(--type-micro-legal-leading); letter-spacing: var(--type-micro-legal-tracking); }
+.type-nav-link    { font-family: var(--font-text); font-size: var(--type-nav-link-size); font-weight: var(--type-nav-link-weight); line-height: var(--type-nav-link-leading); letter-spacing: var(--type-nav-link-tracking); }

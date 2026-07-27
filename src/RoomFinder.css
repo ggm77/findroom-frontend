@@ -1,0 +1,189 @@
+.rf-page {
+  min-height: 100vh;
+  background: var(--color-canvas-parchment);
+  display: flex;
+  justify-content: center;
+}
+
+.rf-container {
+  width: 100%;
+  max-width: 480px;
+  background: var(--color-canvas-parchment);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rf-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(245, 245, 247, 0.86);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--color-hairline-rgba);
+  padding: 20px 20px 16px;
+}
+
+.rf-eyebrow {
+  font-family: var(--font-text);
+  font-size: var(--type-caption-strong-size);
+  font-weight: var(--type-caption-strong-weight);
+  letter-spacing: var(--type-caption-strong-tracking);
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.rf-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--color-ink);
+  margin-top: 4px;
+}
+
+.rf-sub {
+  font-family: var(--font-text);
+  font-size: var(--type-caption-size);
+  color: var(--color-ink-muted-48);
+  margin-top: 6px;
+}
+
+.rf-mode-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--color-surface-chip);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  margin-top: 16px;
+}
+
+.rf-building-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-top: 14px;
+  padding-bottom: 2px;
+}
+
+.rf-time-panel {
+  margin-top: 14px;
+}
+
+.rf-day-chips {
+  display: flex;
+  gap: 8px;
+}
+
+.rf-time-range {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.rf-select {
+  flex: 1;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-hairline);
+  background: #fff;
+  padding: 0 16px;
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: var(--color-ink);
+}
+
+.rf-main {
+  padding: 20px;
+  flex: 1;
+}
+
+.rf-banner {
+  background: #fff;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: var(--color-ink);
+}
+
+.rf-section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rf-section-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.rf-section-count {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--color-ink-muted-48);
+}
+
+.rf-section-count-primary {
+  color: var(--color-primary);
+}
+
+.rf-room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rf-room-card {
+  background: #fff;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.rf-room-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.rf-room-meta {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: var(--color-ink-muted-48);
+  margin-top: 3px;
+}
+
+.rf-room-status {
+  text-align: right;
+}
+
+.rf-room-status-label {
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink-muted-48);
+}
+
+.rf-room-status-label-primary {
+  color: var(--color-primary);
+}
+
+.rf-empty {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--color-ink-muted-48);
+  padding: 8px 4px;
+}

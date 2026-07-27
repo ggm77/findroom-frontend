@@ -1,0 +1,14 @@
+/* ============================================================
+   Border radius — one grammar per intent, nothing in between.
+   sm = compact utility · lg = utility cards · pill = actions ·
+   md = the rare Pearl Button capsule.
+   ============================================================ */
+:root {
+  --radius-none: 0px;     /* full-bleed product tiles */
+  --radius-xs: 5px;       /* inline links styled as subtle chips (rare) */
+  --radius-sm: 8px;       /* dark utility buttons, inline card imagery */
+  --radius-md: 11px;      /* white Pearl Button capsules */
+  --radius-lg: 18px;      /* store & accessories utility cards */
+  --radius-pill: 9999px;  /* primary blue pill CTAs, search, chips */
+  --radius-full: 9999px;  /* circular control chips over photography */
+}

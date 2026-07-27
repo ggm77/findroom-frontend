@@ -1,0 +1,39 @@
+/* ============================================================
+   Colors — the single-accent Apple palette
+   ------------------------------------------------------------
+   ONE interactive color (Action Blue). No second brand color.
+   No decorative gradient tokens exist by design.
+   ============================================================ */
+:root {
+  /* --- Brand & accent (the only "click me" signal) --- */
+  --color-primary: #0066cc;          /* Action Blue — all links, pill CTAs, focus root */
+  --color-primary-focus: #0071e3;    /* brighter sibling — keyboard focus ring only */
+  --color-primary-on-dark: #2997ff;  /* Sky Link Blue — in-copy links on dark tiles */
+  --color-on-primary: #ffffff;       /* text on Action Blue */
+
+  /* --- Surface --- */
+  --color-canvas: #ffffff;                 /* dominant white canvas */
+  --color-canvas-parchment: #f5f5f7;       /* signature off-white — alternating tiles, footer */
+  --color-surface-pearl: #fafafc;          /* ghost-button fill, reads as a button on parchment */
+  --color-surface-tile-1: #272729;         /* primary dark tile */
+  --color-surface-tile-2: #2a2a2c;         /* micro-step lighter — adjacent dark tiles */
+  --color-surface-tile-3: #252527;         /* micro-step darker — bottom of stack, player frames */
+  --color-surface-black: #000000;          /* true void — global nav, video, photo overlays */
+  --color-surface-chip: #d2d2d7;           /* translucent chip base */
+  --color-surface-chip-translucent: rgba(210, 210, 215, 0.64); /* applied over photography */
+
+  /* --- Text --- */
+  --color-ink: #1d1d1f;            /* near-black — every headline & body on light */
+  --color-body: #1d1d1f;           /* same tone — Apple uses one near-black on light */
+  --color-on-dark: #ffffff;        /* text on dark tiles & global nav */
+  --color-body-on-dark: #ffffff;
+  --color-body-muted: #cccccc;     /* secondary copy on dark tiles */
+  --color-ink-muted-80: #333333;   /* body on pearl button surface */
+  --color-ink-muted-48: #7a7a7a;   /* disabled text, legal fine-print */
+
+  /* --- Hairlines & borders --- */
+  --color-divider-soft: #f0f0f0;   /* secondary-button ring (often rgba(0,0,0,.04)) */
+  --color-divider-soft-rgba: rgba(0, 0, 0, 0.04);
+  --color-hairline: #e0e0e0;       /* 1px hairline on cards & chips */
+  --color-hairline-rgba: rgba(0, 0, 0, 0.08); /* card / sub-nav separator */
+}
