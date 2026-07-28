@@ -301,6 +301,18 @@ function RoomFinder() {
             </>
           )}
         </main>
+
+        <footer className="rf-footer">
+          <p className="rf-footer-notice">
+            본 서비스는 학교의 공식 서비스가 아닌 비공식 정보 제공 서비스입니다.
+            <br />
+            강의실/시설 정보는 예고 없이 변경될 수 있으니, 정확한 정보는 학교 공식 채널을 통해 확인하세요.
+          </p>
+          <p className="rf-footer-contact">
+            문의: <a href="mailto:shm040806@gmail.com">shm040806@gmail.com</a>
+          </p>
+          <p className="rf-footer-copyright">© 2026 FindRoom. All rights reserved.</p>
+        </footer>
       </div>
     </div>
   );

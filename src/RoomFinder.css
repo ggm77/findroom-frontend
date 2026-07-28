@@ -293,3 +293,29 @@
   color: var(--color-ink-muted-48);
   padding: 8px 4px;
 }
+
+.rf-footer {
+  border-top: 1px solid var(--color-hairline);
+  padding: 20px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--color-ink-muted-48);
+}
+
+.rf-footer p {
+  margin: 0;
+}
+
+.rf-footer-notice {
+  margin-bottom: 8px;
+}
+
+.rf-footer-contact a {
+  color: var(--color-ink-muted-48);
+  text-decoration: underline;
+}
+
+.rf-footer-copyright {
+  margin-top: 8px;
+}
