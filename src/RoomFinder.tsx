@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { getEmptyRooms, toApiDayOfWeek, toApiTime, type RoomStatus } from './api/rooms';
 import { buildingName, buildingOrderIndex } from './constants/buildings';
 import './RoomFinder.css';
@@ -13,18 +13,14 @@ function pad(n: number) {
   return String(n).padStart(2, '0');
 }
 
-function buildTimeOptions(): string[] {
-  const opts: string[] = [];
-  for (let h = 8; h <= 21; h++) {
-    for (const m of [0, 30]) {
-      if (h === 21 && m === 30) continue;
-      opts.push(`${pad(h)}:${pad(m)}`);
-    }
-  }
+function buildHourOptions(): number[] {
+  const opts: number[] = [];
+  for (let h = 8; h <= 21; h++) opts.push(h);
   return opts;
 }
 
-const TIME_OPTIONS = buildTimeOptions();
+const HOUR_OPTIONS = buildHourOptions();
+const MINUTE_OPTIONS = [0, 30];
 
 function pillStyle(active: boolean): CSSProperties {
   return {
@@ -63,11 +59,87 @@ function initialWeekday() {
   return apiDay > 4 ? 0 : apiDay;
 }
 
+type DropdownOption = { value: string; label: string };
+
+function Dropdown({
+  value,
+  options,
+  onChange,
+  open,
+  onOpenChange,
+  ariaLabel,
+}: {
+  value: string;
+  options: DropdownOption[];
+  onChange: (value: string) => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  ariaLabel: string;
+}) {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handlePointerDown(e: MouseEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        onOpenChange(false);
+      }
+    }
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') onOpenChange(false);
+    }
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open, onOpenChange]);
+
+  const selected = options.find((opt) => opt.value === value);
+
+  return (
+    <div className="rf-dropdown" ref={rootRef}>
+      <button
+        type="button"
+        className="rf-dropdown-trigger"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={ariaLabel}
+        onClick={() => onOpenChange(!open)}
+      >
+        <span>{selected?.label ?? ''}</span>
+        <span className={`rf-dropdown-chevron${open ? ' rf-dropdown-chevron-open' : ''}`} aria-hidden="true" />
+      </button>
+      {open && (
+        <ul className="rf-dropdown-list" role="listbox" aria-label={ariaLabel}>
+          {options.map((opt) => (
+            <li
+              key={opt.value}
+              role="option"
+              aria-selected={opt.value === value}
+              className={`rf-dropdown-option${opt.value === value ? ' rf-dropdown-option-active' : ''}`}
+              onClick={() => {
+                onChange(opt.value);
+                onOpenChange(false);
+              }}
+            >
+              {opt.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function RoomFinder() {
   const [mode, setMode] = useState<Mode>('now');
   const [building, setBuilding] = useState('all');
   const [day, setDay] = useState(initialWeekday);
   const [time, setTime] = useState('09:00');
+  const [timeHour, timeMinute] = time.split(':');
+  const [openTimeField, setOpenTimeField] = useState<'hour' | 'minute' | null>(null);
 
   const [rooms, setRooms] = useState<RoomStatus[]>([]);
   const [loading, setLoading] = useState(true);
@@ -129,8 +201,7 @@ function RoomFinder() {
             <img src="/findroom.svg" alt="빈 강의실 찾기 로고" className="rf-logo" />
             <div className="rf-eyebrow">빈 강의실 찾기</div>
           </div>
-          <div className="rf-title">지금 바로, 빈 강의실 찾아줄게</div>
-          <div className="rf-sub">{nowLabel} 기준</div>
+          <div className="rf-title">지금 바로, 빈 강의실 찾기</div>
 
           <div className="rf-mode-toggle">
             <button type="button" onClick={() => setMode('now')} style={pillStyle(!isTimeMode)}>
@@ -158,12 +229,35 @@ function RoomFinder() {
                   </button>
                 ))}
               </div>
-              <div className="rf-time-range">
-                <select className="rf-select" value={time} onChange={(e) => setTime(e.target.value)}>
-                  {TIME_OPTIONS.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </select>
+              <div className="rf-time-picker">
+                <div className="rf-time-field">
+                  <Dropdown
+                    ariaLabel="시"
+                    value={timeHour}
+                    options={HOUR_OPTIONS.map((h) => ({ value: pad(h), label: `${h}시` }))}
+                    open={openTimeField === 'hour'}
+                    onOpenChange={(o) => setOpenTimeField(o ? 'hour' : null)}
+                    onChange={(v) => {
+                      const h = Number(v);
+                      const m = h === 21 ? 0 : Number(timeMinute);
+                      setTime(`${pad(h)}:${pad(m)}`);
+                    }}
+                  />
+                </div>
+                <div className="rf-time-divider" aria-hidden="true" />
+                <div className="rf-time-field">
+                  <Dropdown
+                    ariaLabel="분"
+                    value={timeMinute}
+                    options={MINUTE_OPTIONS.filter((m) => !(Number(timeHour) === 21 && m === 30)).map((m) => ({
+                      value: pad(m),
+                      label: `${pad(m)}분`,
+                    }))}
+                    open={openTimeField === 'minute'}
+                    onOpenChange={(o) => setOpenTimeField(o ? 'minute' : null)}
+                    onChange={(v) => setTime(`${timeHour}:${v}`)}
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -176,7 +270,15 @@ function RoomFinder() {
           {!loading && !error && (
             <>
               <div className="rf-section-heading">
-                <div className="rf-section-title">{isTimeMode ? '이 시간대 비어있어요' : '지금 비어있어요'}</div>
+                <div className="rf-section-title">
+                  {isTimeMode ? (
+                    '이 시간대 비어있어요'
+                  ) : (
+                    <>
+                      지금 비어있어요 <span className="rf-section-sub">{nowLabel} 기준</span>
+                    </>
+                  )}
+                </div>
                 <div className="rf-section-count rf-section-count-primary">{sorted.length}개</div>
               </div>
 

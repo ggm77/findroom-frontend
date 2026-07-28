@@ -56,13 +56,6 @@
   margin-top: 4px;
 }
 
-.rf-sub {
-  font-family: var(--font-text);
-  font-size: var(--type-caption-size);
-  color: var(--color-ink-muted-48);
-  margin-top: 6px;
-}
-
 .rf-mode-toggle {
   display: flex;
   gap: 4px;
@@ -89,23 +82,116 @@
   gap: 8px;
 }
 
-.rf-time-range {
+.rf-time-picker {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  align-items: stretch;
   margin-top: 12px;
+  background: #fff;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
 }
 
-.rf-select {
+.rf-time-field {
   flex: 1;
-  height: 44px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--color-hairline);
+  position: relative;
+}
+
+.rf-time-field:first-child .rf-dropdown-trigger {
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.rf-time-field:last-child .rf-dropdown-trigger {
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.rf-time-divider {
+  width: 1px;
+  background: var(--color-hairline);
+  margin: 10px 0;
+}
+
+.rf-dropdown {
+  position: relative;
+  height: 100%;
+}
+
+.rf-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  border: none;
+  background-color: transparent;
+  padding: 0 14px 0 18px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background-color .15s;
+}
+
+.rf-dropdown-trigger:hover {
+  background-color: var(--color-canvas-parchment);
+}
+
+.rf-dropdown-trigger:focus-visible {
+  outline: none;
+  background-color: rgba(0, 102, 204, 0.06);
+  box-shadow: inset 0 0 0 2px var(--color-primary-focus);
+}
+
+.rf-dropdown-chevron {
+  flex-shrink: 0;
+  width: 10px;
+  height: 6px;
+  background-color: var(--color-ink-muted-48);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23000' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23000' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .15s;
+}
+
+.rf-dropdown-chevron-open {
+  transform: rotate(180deg);
+}
+
+.rf-dropdown-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  max-height: 240px;
+  overflow-y: auto;
   background: #fff;
-  padding: 0 16px;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.rf-dropdown-option {
+  padding: 10px 12px;
+  border-radius: 10px;
   font-family: var(--font-text);
   font-size: 15px;
+  font-weight: 500;
   color: var(--color-ink);
+  cursor: pointer;
+}
+
+.rf-dropdown-option:hover {
+  background-color: var(--color-canvas-parchment);
+}
+
+.rf-dropdown-option-active {
+  background-color: rgba(0, 102, 204, 0.08);
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .rf-main {
@@ -136,6 +222,13 @@
   font-size: 19px;
   font-weight: 600;
   color: var(--color-ink);
+}
+
+.rf-section-sub {
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-ink-muted-48);
 }
 
 .rf-section-count {
