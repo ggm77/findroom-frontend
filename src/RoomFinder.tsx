@@ -125,7 +125,10 @@ function RoomFinder() {
     <div className="rf-page">
       <div className="rf-container">
         <header className="rf-header">
-          <div className="rf-eyebrow">빈 강의실 찾기</div>
+          <div className="rf-brand">
+            <img src="/findroom.svg" alt="빈 강의실 찾기 로고" className="rf-logo" />
+            <div className="rf-eyebrow">빈 강의실 찾기</div>
+          </div>
           <div className="rf-title">지금 바로, 빈 강의실 찾아줄게</div>
           <div className="rf-sub">{nowLabel} 기준</div>
 

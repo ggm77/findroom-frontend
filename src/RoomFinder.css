@@ -25,6 +25,19 @@
   padding: 20px 20px 16px;
 }
 
+.rf-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rf-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
 .rf-eyebrow {
   font-family: var(--font-text);
   font-size: var(--type-caption-strong-size);
