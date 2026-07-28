@@ -32,9 +32,9 @@
 }
 
 .rf-logo {
-  width: 96px;
-  height: 96px;
-  border-radius: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
   flex-shrink: 0;
 }
 
