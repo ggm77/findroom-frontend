@@ -311,6 +311,9 @@ function RoomFinder() {
           <p className="rf-footer-contact">
             문의: <a href="mailto:shm040806@gmail.com">shm040806@gmail.com</a>
           </p>
+          <p className="rf-footer-links">
+            <a href="/privacy.html">개인정보처리방침</a>
+          </p>
           <p className="rf-footer-copyright">© 2026 FindRoom. All rights reserved.</p>
         </footer>
       </div>

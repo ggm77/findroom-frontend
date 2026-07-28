@@ -316,6 +316,15 @@
   text-decoration: underline;
 }
 
+.rf-footer-links {
+  margin-top: 8px;
+}
+
+.rf-footer-links a {
+  color: var(--color-ink-muted-48);
+  text-decoration: underline;
+}
+
 .rf-footer-copyright {
   margin-top: 8px;
 }
