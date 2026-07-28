@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 import { getEmptyRooms, toApiDayOfWeek, toApiTime, type RoomStatus } from './api/rooms';
+import { buildingName, buildingOrderIndex } from './constants/buildings';
 import './RoomFinder.css';
 
 type Mode = 'now' | 'time';
@@ -106,11 +107,18 @@ function RoomFinder() {
     };
   }, [isTimeMode, day, time]);
 
-  const buildingList = ['all', ...Array.from(new Set(rooms.map((r) => r.buildingName))).sort()];
+  const buildingList = [
+    'all',
+    ...Array.from(new Set(rooms.map((r) => r.buildingName))).sort(
+      (a, b) => buildingOrderIndex(a) - buildingOrderIndex(b),
+    ),
+  ];
 
   const filtered = building === 'all' ? rooms : rooms.filter((r) => r.buildingName === building);
   const sorted = [...filtered].sort((a, b) =>
-    a.buildingName === b.buildingName ? a.roomNumber - b.roomNumber : a.buildingName.localeCompare(b.buildingName),
+    a.buildingName === b.buildingName
+      ? a.roomNumber - b.roomNumber
+      : buildingOrderIndex(a.buildingName) - buildingOrderIndex(b.buildingName),
   );
 
   return (
@@ -133,7 +141,7 @@ function RoomFinder() {
           <div className="rf-building-chips">
             {buildingList.map((b) => (
               <button key={b} type="button" onClick={() => setBuilding(b)} style={chipStyle(building === b)}>
-                {b === 'all' ? '전체' : b}
+                {b === 'all' ? '전체' : buildingName(b)}
               </button>
             ))}
           </div>
@@ -173,7 +181,7 @@ function RoomFinder() {
                 {sorted.map((room) => (
                   <div className="rf-room-card" key={`${room.buildingName}-${room.roomNumber}`}>
                     <div>
-                      <div className="rf-room-name">{room.buildingName} {room.roomNumber}</div>
+                      <div className="rf-room-name">{buildingName(room.buildingName)} {room.roomNumber}</div>
                       <div className="rf-room-meta">{Math.floor(room.roomNumber / 100)}층</div>
                     </div>
                     <div className="rf-room-status">
