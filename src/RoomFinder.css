@@ -56,6 +56,13 @@
   margin-top: 4px;
 }
 
+.rf-disclaimer {
+  font-family: var(--font-text);
+  font-size: 12px;
+  color: var(--color-ink-muted-48);
+  margin-top: 2px;
+}
+
 .rf-mode-toggle {
   display: flex;
   gap: 4px;

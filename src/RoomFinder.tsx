@@ -202,6 +202,7 @@ function RoomFinder() {
             <div className="rf-eyebrow">빈 강의실 찾기</div>
           </div>
           <div className="rf-title">지금 바로, 빈 강의실 찾기</div>
+          <div className="rf-disclaimer">학교 공식 서비스가 아닌, 개인이 만든 서비스예요</div>
 
           <div className="rf-mode-toggle">
             <button type="button" onClick={() => setMode('now')} style={pillStyle(!isTimeMode)}>
